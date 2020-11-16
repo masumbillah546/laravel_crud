@@ -16,3 +16,4 @@ Route::get('/', function () {
 });
 
 Route::resource('crud', 'CRUDController');
+Route::get('destroy/{id}', 'CRUDController@destroy');

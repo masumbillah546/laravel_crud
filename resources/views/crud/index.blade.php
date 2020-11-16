@@ -17,15 +17,16 @@
       <td>{{$post['title']}}</td>
       <td>{{$post['post']}}</td>
       <td><a href="crud/{{$post['id']}}/edit" class="btn  btn-info"><i class="glyphicon glyphicon-edit"></i></a></td>
+      <td><a href="destroy/{{$post['id']}}/" class="btn  btn-danger"><i class="glyphicon glyphicon-trash"></i></a></td>
       <!-- <td><a href="{{action('CRUDController@destroy', $post['id'])}}" class="btn  btn-danger"><i class="glyphicon glyphicon-trash"></i></a></td> -->
 
-      <td>
+     <!--  <td>
           <form action="{{action('CRUDController@destroy', $post['id'])}}" method="post">
             {{csrf_field()}}
             <input name="_method" type="hidden" value="DELETE">
             <button class="btn btn-danger" type="submit"><i class="glyphicon glyphicon-trash"></i></button>
           </form>
-        </td>
+        </td> -->
       
     </tr>
     @endforeach
