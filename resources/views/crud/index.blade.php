@@ -20,7 +20,7 @@
       <td><a href="destroy/{{$post['id']}}/" class="btn  btn-danger"><i class="glyphicon glyphicon-trash"></i></a></td>
       <!-- <td><a href="{{action('CRUDController@destroy', $post['id'])}}" class="btn  btn-danger"><i class="glyphicon glyphicon-trash"></i></a></td> -->
 
-     <!--  <td>
+    <!--   <td>
           <form action="{{action('CRUDController@destroy', $post['id'])}}" method="post">
             {{csrf_field()}}
             <input name="_method" type="hidden" value="DELETE">
