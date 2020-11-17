@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Teacher;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class TeacherController extends Controller
 {
@@ -14,7 +15,9 @@ class TeacherController extends Controller
      */
     public function index()
     {
-        $data=Teacher::all()->toArray();
+        //$data=Teacher::all()->toArray();
+        //$data=Teacher::all()->toArray();
+        $data=Teacher::paginate(3);
         return view('teacher.index',compact('data'));
     }
 
@@ -36,13 +39,32 @@ class TeacherController extends Controller
      */
     public function store(Request $request)
     {
+
+
+        $validatedData =  Validator::make($request->all(),[
+        'name' => 'required|min:5',
+        //'gender' => 'required|email|unique:users',
+        'gender' => 'required',
+        //'desi' => 'required|min:6',
+        'desi' => 'required',
+        //'district' => 'required|min:6',
+        'district' => 'required',
+        ]);
+
+        if ($validatedData->fails()) {
+            //return redirect('teacher/create')->withErrors($validatedData)->withInput(Input::all());
+            return redirect()->back()->withErrors($validatedData)->withInput();
+        }
+
         $data = new Teacher([
           // 'name' => $request->get('name'),
           // 'gender' => $request->get('gender'),
           // 'desi' => $request->get('desi'),
           // 'district' => $request->get('district'),
 
-            'name' => $request->name,
+        
+
+          'name' => $request->name,
           'gender' => $request->gender,
           'desi' => $request->desi,
           'district' => $request->get('district'),

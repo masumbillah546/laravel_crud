@@ -34,3 +34,4 @@
   <a href="{{url('crud/create')}}" class="btn btn-success">New Entry</a>
 </div>
 @endsection
+

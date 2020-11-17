@@ -181,6 +181,7 @@ $(document).ready(function(){
 <body>
 <div class="container-xl">
     <div class="table-responsive">
+
         <div class="table-wrapper">
             <div class="table-title">
                 <div class="row">
@@ -191,9 +192,21 @@ $(document).ready(function(){
                 </div>
             </div>
 
+@if (isset($errors) && (count($errors) > 0))
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
             <form action="{{url('teacher')}}" method="post" class="form-group">
+
+           <!--  <form action="{{action('TeacherController@store')}}" method="post" class="form-group"> -->
             	<label>Name</label>
-            	<input type="text" name="name" placeholder="" class="form-control">
+            	<input type="text" name="name" placeholder="" class="form-control" value="{{old('name')}}">
             	<label>Gender</label>
             	<select name="gender" id="" class="form-control">
             		<option value="">Select gender</option>
@@ -201,9 +214,9 @@ $(document).ready(function(){
             		<option value="Female">Female</option>
             	</select>
             	<label>Designation</label>
-            	<input type="text" name="desi" placeholder="" class="form-control">
+            	<input type="text" name="desi" placeholder="" class="form-control" value="{{old('desi')}}">
             	<label>District</label>
-            	<input type="text" name="district" placeholder="" class="form-control"><br>
+            	<input type="text" name="district" placeholder="" class="form-control" value="{{old('district')}}"><br>
             	<button type="submit" name="submit" class="form-control btn bg-success">Submit</button>
             	 {{csrf_field()}}
             </form>
