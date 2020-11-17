@@ -18,5 +18,6 @@ Route::get('/', function () {
 // Route::resource('crud', 'CRUDController');
 // Route::get('destroy/{id}', 'CRUDController@destroy');
  Route::get('destroy/{id}', 'TeacherController@destroy');
+ Route::get('edit/{id}', 'TeacherController@edit');
  Route::resource('teacher', 'TeacherController');
 //Route::resource('student', 'StudentController');

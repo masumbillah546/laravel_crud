@@ -191,7 +191,8 @@ $(document).ready(function(){
                 </div>
             </div>
 
-            <form action="{{action('TeacherController@update', $teacher->id)}}" method="post" class="form-group">
+            <!-- <form action="{{action('TeacherController@update', $teacher->id)}}" method="post" class="form-group"> -->
+            <form action="http://localhost:8000/teacher/{{$teacher->id}}" method="post" class="form-group">
             	 <input name="_method" type="hidden" value="PATCH">
             	<label>Name</label>
             	<input type="text" name="name" placeholder="" class="form-control" value="{{$teacher->name}}">

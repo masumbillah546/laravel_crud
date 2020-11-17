@@ -37,9 +37,14 @@ class TeacherController extends Controller
     public function store(Request $request)
     {
         $data = new Teacher([
-          'name' => $request->get('name'),
-          'gender' => $request->get('gender'),
-          'desi' => $request->get('desi'),
+          // 'name' => $request->get('name'),
+          // 'gender' => $request->get('gender'),
+          // 'desi' => $request->get('desi'),
+          // 'district' => $request->get('district'),
+
+            'name' => $request->name,
+          'gender' => $request->gender,
+          'desi' => $request->desi,
           'district' => $request->get('district'),
         ]);
 
@@ -64,13 +69,14 @@ class TeacherController extends Controller
      * @param  \App\Teacher  $teacher
      * @return \Illuminate\Http\Response
      */
-    public function edit(Teacher $teacher)
+    //public function edit(Teacher $teacher)
+    public function edit( $teacher2)
     {   
         //$data = Teacher::find($teacher);
         // echo "<pre>";
         // print_r($teacher);
-     
-        
+      $teacher = Teacher::find($teacher2);
+         
        // $data = $teacher['id'];
         return view('teacher.edit', compact('teacher'));
     }
@@ -103,7 +109,7 @@ class TeacherController extends Controller
     //public function destroy(Teacher $teacher)
     public function destroy($id)
     {
-         $data = Teacher::find($id);
+         $data = Teacher::find($teacher);
       $data->delete();
 
       return redirect('/teacher');

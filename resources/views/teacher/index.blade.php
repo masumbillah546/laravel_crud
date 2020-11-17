@@ -221,13 +221,17 @@ $(document).ready(function(){
                         <td>Admin</td>
                         <td><span class="status text-success">&bull;</span> Active</td> -->
                         <td>
-                        	<a href="teacher/{{$teacher['id']}}" class="" title="View" data-toggle="tooltip" ><i class=" glyphicon glyphicon-user"></i></a>
-                            <a href="teacher/{{$teacher['id']}}/edit" class="settings" title="Settings" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a>
+                        <!-- 	<a href="teacher/{{$teacher['id']}}/show" class="" title="View" data-toggle="tooltip" ><i class=" glyphicon glyphicon-user"></i></a> -->
+                            <a href="{{action('TeacherController@update', $teacher['id'])}}" class="" title="View" data-toggle="tooltip" ><i class=" glyphicon glyphicon-user"></i></a>
+                         <!--    <a href="teacher/{{$teacher['id']}}/edit" class="settings" title="Settings" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a> -->
+                            <a href="edit/{{$teacher['id']}}" class="settings" title="Settings" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a>
                             <a href="destroy/{{$teacher['id']}}" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a>
+                         <!--    <a href="delete/{{$teacher['id']}}" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a> -->
                            
                         </td>
                     </tr>
                     @endforeach
+
              <!--        <tr>
                         <td>2</td>
                         <td><a href="#"><img src="/examples/images/avatar/2.jpg" class="avatar" alt="Avatar"> Paula Wilson</a></td>
