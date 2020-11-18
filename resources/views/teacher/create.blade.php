@@ -210,8 +210,8 @@ $(document).ready(function(){
             	<label>Gender</label>
             	<select name="gender" id="" class="form-control">
             		<option value="">Select gender</option>
-            		<option value="Male">Male</option>
-            		<option value="Female">Female</option>
+            		<option value="Male" <?php echo old("gender") == "Male" ? "selected":"" ; ?>>Male</option>
+            		<option value="Female" <?php echo old("gender") == "Female" ? "selected":"" ; ?>>Female</option>
             	</select>
             	<label>Designation</label>
             	<input type="text" name="desi" placeholder="" class="form-control" value="{{old('desi')}}">

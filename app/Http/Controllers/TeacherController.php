@@ -53,7 +53,8 @@ class TeacherController extends Controller
 
         if ($validatedData->fails()) {
             //return redirect('teacher/create')->withErrors($validatedData)->withInput(Input::all());
-            return redirect()->back()->withErrors($validatedData)->withInput();
+            //return redirect()->back()->withErrors($validatedData)->withInput();
+            return back()->withErrors($validatedData)->withInput();
         }
 
         $data = new Teacher([
