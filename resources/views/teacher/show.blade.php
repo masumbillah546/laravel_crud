@@ -195,10 +195,10 @@ $(document).ready(function(){
                 </div>
             </div>
 
-
+{{ storage_path().'/app/'.$teacher->fileToUpload }}
             <table class="table table-bordered">
                 <tr>
-                    <td colspan="2"><img src="" alt="image"></td>
+                    <td colspan="2"><img height="200" src="{{ url($teacher->fileToUpload )}}" alt="image"></td>
                 </tr>
                 <tr>
                     <th>Name</th>

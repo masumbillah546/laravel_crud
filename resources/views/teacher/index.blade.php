@@ -194,6 +194,12 @@ $(document).ready(function(){
                     </div>
                 </div>
             </div>
+<!-- @if (!empty($Success))
+    <h1>{{$Success}}</h1>
+@endif -->
+
+            <h1>{{session('success')}}</h1>
+
             <table class="table table-bordered table-hover">
                 <thead>
                     <tr>
@@ -222,7 +228,7 @@ $(document).ready(function(){
                         <td><span class="status text-success">&bull;</span> Active</td> -->
                         <td>
                         <!-- 	<a href="teacher/{{$teacher['id']}}/show" class="" title="View" data-toggle="tooltip" ><i class=" glyphicon glyphicon-user"></i></a> -->
-                            <a href="{{action('TeacherController@update', $teacher['id'])}}" class="" title="View" data-toggle="tooltip" ><i class=" glyphicon glyphicon-user"></i></a>
+                            <a href="{{action('TeacherController@update', $teacher['id'])}}" class="" title="View" data-toggle="tooltip" ><i class=" glyphicon glyphicon-eye-open"></i></a>
                          <!--    <a href="teacher/{{$teacher['id']}}/edit" class="settings" title="Settings" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a> -->
                             <a href="edit/{{$teacher['id']}}" class="settings" title="Settings" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a>
                             <a href="destroy/{{$teacher['id']}}" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a>

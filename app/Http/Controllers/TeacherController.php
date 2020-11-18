@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Teacher;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Storage;
 
 class TeacherController extends Controller
 {
@@ -40,6 +41,12 @@ class TeacherController extends Controller
     public function store(Request $request)
     {
 
+        $msg=[
+            //'name.required'=>'Name must required',
+            'name.min'=>'Name min 5 charecter',
+
+
+            ];
 
         $validatedData =  Validator::make($request->all(),[
         'name' => 'required|min:5',
@@ -49,10 +56,10 @@ class TeacherController extends Controller
         'desi' => 'required',
         //'district' => 'required|min:6',
         'district' => 'required',
-        ]);
+        ], $msg);
 
         if ($validatedData->fails()) {
-            //return redirect('teacher/create')->withErrors($validatedData)->withInput(Input::all());
+            return redirect('teacher/create')->withErrors($validatedData)->withInput();
             //return redirect()->back()->withErrors($validatedData)->withInput();
             return back()->withErrors($validatedData)->withInput();
         }
@@ -66,13 +73,21 @@ class TeacherController extends Controller
         
 
           'name' => $request->name,
+          'fileToUpload'=>$request->fileToUpload->store('logos'),
           'gender' => $request->gender,
           'desi' => $request->desi,
           'district' => $request->get('district'),
         ]);
 
+        // $photo = $request->file('fileToUpload');
+        // Storage::putFile('public/logos',$photo);
+        // $data->fileToUpload = $request->fileToUpload->store('storage/logos');
+
+
         $data->save();
-        return redirect('/teacher');
+        return redirect()->back()->withSuccess('Successfully added!');
+        //return redirect('/teacher')->withSuccess('IT WORKS!');
+        //return redirect('/teacher')->with('success', 'Successfully added!');
     }
 
     /**
@@ -132,7 +147,7 @@ class TeacherController extends Controller
     //public function destroy(Teacher $teacher)
     public function destroy($id)
     {
-         $data = Teacher::find($teacher);
+         $data = Teacher::find($id);
       $data->delete();
 
       return redirect('/teacher');

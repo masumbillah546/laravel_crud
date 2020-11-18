@@ -186,7 +186,11 @@ $(document).ready(function(){
             <div class="table-title">
                 <div class="row">
                     <div class="col-sm-5">
-                        <h2>Teacher <b>Management</b></h2>
+                        <h2>Add a <b>Teacher</b></h2>
+                    </div>
+                    <div class="col-sm-7">
+                        <a href="{{url('teacher')}}" class="btn btn-secondary"><i class="material-icons"></i> <span>Home</span></a>
+                                             
                     </div>
                     
                 </div>
@@ -202,16 +206,23 @@ $(document).ready(function(){
     </div>
 @endif
 
-            <form action="{{url('teacher')}}" method="post" class="form-group">
+ <h1>{{session('success')}}</h1>
+            <form action="{{url('teacher')}}" method="post" class="form-group" enctype="multipart/form-data">
 
            <!--  <form action="{{action('TeacherController@store')}}" method="post" class="form-group"> -->
             	<label>Name</label>
             	<input type="text" name="name" placeholder="" class="form-control" value="{{old('name')}}">
+                <label>Photo</label>
+                <input type="file" class="form-control-file" name="fileToUpload" id="exampleInputFile" aria-describedby="fileHelp">
+                                <small id="fileHelp" class="form-text text-muted">Please upload a valid image file. Size of image should not be more than 2MB.</small>
+
             	<label>Gender</label>
             	<select name="gender" id="" class="form-control">
             		<option value="">Select gender</option>
-            		<option value="Male" <?php echo old("gender") == "Male" ? "selected":"" ; ?>>Male</option>
-            		<option value="Female" <?php echo old("gender") == "Female" ? "selected":"" ; ?>>Female</option>
+            		<!-- <option value="Male" <?php echo old("gender") == "Male" ? "selected":"" ; ?>>Male</option> -->
+                    <option value="Male" {{old("gender") == "Male" ? "selected":""  }}>Male</option>
+            		<!-- <option value="Female" <?php echo old("gender") == "Female" ? "selected":"" ; ?>>Female</option> -->
+                     <option value="Female" {{old("gender") == "Female" ? "selected":""  }}>Female</option>
             	</select>
             	<label>Designation</label>
             	<input type="text" name="desi" placeholder="" class="form-control" value="{{old('desi')}}">
