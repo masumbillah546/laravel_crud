@@ -73,7 +73,7 @@ class TeacherController extends Controller
         
 
           'name' => $request->name,
-          'fileToUpload'=>$request->fileToUpload->store('logos'),
+          'fileToUpload'=>$request->fileToUpload->store('logos','public'),
           'gender' => $request->gender,
           'desi' => $request->desi,
           'district' => $request->get('district'),
